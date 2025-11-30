@@ -3,8 +3,465 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
     <title>Priyanka J - Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #fff;
+            color: #000;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 1.5rem 0;
+            z-index: 100;
+            background-color: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #000;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 2rem;
+        }
+
+        .nav-links a {
+            color: #000;
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #555;
+        }
+
+        /* Hero section */
+        .hero {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            height: 100%;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .hero h3 {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            font-weight: 400;
+            color: #333;
+        }
+
+        .hero p {
+            max-width: 600px;
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+        }
+
+        .btn {
+            display: inline-block;
+            background: #000;
+            color: #fff;
+            padding: 0.8rem 1.5rem;
+            border: none;
+            cursor: pointer;
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            background: #333;
+        }
+
+        /* About section */
+        #about {
+            padding: 5rem 0;
+            background-color: #f5f5f5;
+        }
+
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 3rem;
+        }
+
+        .about-img {
+            flex: 1;
+        }
+
+        .about-img img {
+            width: 100%;
+            border-radius: 5px;
+        }
+
+        .about-text {
+            flex: 1;
+        }
+
+        .about-text h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .about-text p {
+            margin-bottom: 1.5rem;
+        }
+
+        /* Experience section */
+        #experience {
+            padding: 5rem 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .experience-container {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .experience-card {
+            background: #fff;
+            border-radius: 5px;
+            padding: 2rem;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+
+        .experience-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .experience-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .experience-header h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .company {
+            font-size: 1.2rem;
+            color: #555;
+            margin-bottom: 0.5rem;
+        }
+
+        .date {
+            font-size: 0.9rem;
+            color: #777;
+        }
+
+        .experience-card ul {
+            margin-left: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .experience-card li {
+            margin-bottom: 0.8rem;
+            color: #333;
+        }
+
+        /* Skills section */
+        #skills {
+            padding: 5rem 0;
+            background-color: #f5f5f5;
+        }
+
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-item {
+            text-align: center;
+            padding: 1.5rem;
+            background: #fff;
+            border-radius: 5px;
+            transition: transform 0.3s;
+        }
+
+        .skill-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .skill-item div {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .skill-item h3 {
+            font-size: 0.9rem;
+            color: #666;
+            font-weight: 400;
+        }
+
+        /* Projects section */
+        #projects {
+            padding: 5rem 0;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: #fff;
+            border-radius: 5px;
+            overflow: hidden;
+            transition: transform 0.3s;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .project-img {
+            height: 200px;
+            overflow: hidden;
+            background: #f5f5f5;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .project-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+
+        .project-card:hover .project-img img {
+            transform: scale(1.05);
+        }
+
+        .project-content {
+            padding: 1.5rem;
+        }
+
+        .project-content h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .project-tech {
+            font-size: 0.85rem;
+            color: #666;
+            margin-bottom: 1rem;
+            font-style: italic;
+        }
+
+        .project-content p {
+            margin-bottom: 1rem;
+            color: #333;
+        }
+
+        .project-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .project-links a {
+            color: #000;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .project-links a:hover {
+            color: #555;
+        }
+
+        /* Certifications section */
+        #certifications {
+            padding: 5rem 0;
+            background-color: #f5f5f5;
+        }
+
+        .certifications-container {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .certification-card {
+            background: #fff;
+            border-radius: 5px;
+            padding: 2rem;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+
+        .certification-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .certification-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .certification-card a {
+            color: #000;
+            text-decoration: none;
+        }
+
+        .certification-card a:hover {
+            color: #555;
+        }
+
+        .certification-card .issuer {
+            font-size: 1.1rem;
+            color: #555;
+            margin-bottom: 1rem;
+        }
+
+        .certification-card .date {
+            font-size: 0.9rem;
+            color: #777;
+            margin-bottom: 1rem;
+        }
+
+        .certification-card .details {
+            font-size: 0.9rem;
+            color: #333;
+        }
+
+        /* Contact section */
+        #contact {
+            padding: 5rem 0;
+        }
+
+        .contact-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .contact-content p {
+            margin-bottom: 2rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .social-links a {
+            color: #000;
+            font-size: 1.5rem;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .social-links a:hover {
+            color: #555;
+        }
+
+        /* Footer */
+        footer {
+            padding: 2rem 0;
+            text-align: center;
+            background-color: #f5f5f5;
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 3rem;
+            }
+            
+            .about-content {
+                flex-direction: column;
+            }
+            
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-links {
+                flex-wrap: wrap;
+                gap: 1rem;
+            }
+
+            .nav-links li {
+                margin-left: 0;
+            }
+
+            .experience-header {
+                flex-direction: column;
+            }
+        }
+    </style>
 </head>
 <body>
     <!-- Navigation -->
@@ -13,9 +470,10 @@
             <a href="#" class="logo">Priyanka J</a>
             <ul class="nav-links">
                 <li><a href="#about">About</a></li>
+                <li><a href="#experience">Experience</a></li>
                 <li><a href="#skills">Skills</a></li>
-                <li><a href="#certifications">Certifications</a></li>
                 <li><a href="#projects">Projects</a></li>
+                <li><a href="#certifications">Certifications</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
         </div>
@@ -25,8 +483,8 @@
     <header id="home">
         <div class="container hero">
             <h1>Hello, I'm <span>Priyanka J</span></h1>
-            <h3>Ex-Junior Software Engineer Intern @IKEA</h3>
-            <p>I create elegant solutions to complex problems with code. Passionate about building responsive and intuitive applications that deliver exceptional user experiences.</p>
+            <h3>Backend Engineer | Ex-Junior Software Engineer Intern @IKEA</h3>
+            <p>I build scalable distributed systems and robust backend infrastructure. Specializing in workflow orchestration, monitoring solutions, and production-grade applications that solve complex technical challenges.</p>
             <a href="#projects" class="btn">View My Work</a>
         </div>
     </header>
@@ -40,10 +498,54 @@
                 </div>
                 <div class="about-text">
                     <h2>About Me</h2>
-                    <p>I'm a passionate software developer with a strong foundation in web technologies and application development. My journey in technology began with a focus on web development, and I've been advancing my skills ever since.</p>
-                    <p>I specialize in creating responsive and intuitive applications that solve real-world problems. My expertise includes Django web development and various web application technologies.</p>
-                    <p>I'm currently looking for new opportunities where I can contribute my skills and grow as a developer.</p>
+                    <p>I'm a backend engineer with hands-on experience building distributed systems and production infrastructure. During my time at IKEA, I architected Apache Airflow orchestration systems, built monitoring infrastructure with Grafana and Prometheus, and developed tools that improved engineering velocity and system reliability.</p>
+                    <p>My expertise spans workflow orchestration, database optimization, RESTful API design, and production debugging. I specialize in Python-based backend development with Django, Flask, and FastAPI, combined with a strong foundation in distributed systems and cloud infrastructure.</p>
+                    <p>I thrive in collaborative environments where I can contribute to architecture discussions, mentor peers through code reviews, and build scalable solutions that impact real users.</p>
                     <a href="#contact" class="btn">Contact Me</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience section -->
+    <section id="experience">
+        <div class="container">
+            <div class="section-header">
+                <h2>Professional Experience</h2>
+                <p>Building production systems and infrastructure</p>
+            </div>
+            <div class="experience-container">
+                <div class="experience-card">
+                    <div class="experience-header">
+                        <div>
+                            <h3>Junior Software Engineer – Intern</h3>
+                            <div class="company">IKEA, INGKA Services LLP | Bengaluru, Karnataka</div>
+                        </div>
+                        <div class="date">Mar 2025 – Nov 2025</div>
+                    </div>
+                    <ul>
+                        <li>Architected and maintained Apache Airflow distributed task orchestration system, designing workflows that increased pipeline reliability by 40% while supporting data processing for multiple business units</li>
+                        <li>Built production monitoring infrastructure using Grafana and Prometheus with PostgreSQL integration, implementing materialized views and automated refresh schedules (pg_cron) for real-time system observability</li>
+                        <li>Developed Synthetic Test Data Generator with Python-based architecture improving test coverage efficiency by 60%, demonstrating ability to build scalable infrastructure tools</li>
+                        <li>Participated in production support and system debugging, collaborating with cross-functional teams to ensure service reliability and minimize downtime</li>
+                        <li>Created comprehensive technical documentation for 3 infrastructure solutions with 2 successfully deployed to production environments</li>
+                        <li>Engaged in agile development practices including sprint planning, code reviews, and architecture discussions with backend, frontend, and QA teams</li>
+                    </ul>
+                </div>
+
+                <div class="experience-card">
+                    <div class="experience-header">
+                        <div>
+                            <h3>Java Full Stack Development Intern</h3>
+                            <div class="company">Colt Assist Pvt Ltd | Bengaluru, Karnataka</div>
+                        </div>
+                        <div class="date">Oct 2023 – Nov 2023</div>
+                    </div>
+                    <ul>
+                        <li>Gained hands-on experience with database systems through projects like a Hospital Database Management System and SGPA Calculator</li>
+                        <li>Architected and implemented relational database solutions with optimized MySQL queries achieving 35% improved data retrieval speed</li>
+                        <li>Developed full-stack applications showcasing Java development and problem-solving skills</li>
+                    </ul>
                 </div>
             </div>
         </div>
@@ -53,22 +555,10 @@
     <section id="skills">
         <div class="container">
             <div class="section-header">
-                <h2>My Skills</h2>
-                <p>Here are some technologies I work with</p>
+                <h2>Technical Skills</h2>
+                <p>Technologies and tools I work with</p>
             </div>
             <div class="skills-container">
-                <div class="skill-item">
-                    <div>HTML5</div>
-                    <h3>Proficient</h3>
-                </div>
-                <div class="skill-item">
-                    <div>CSS3</div>
-                    <h3>Proficient</h3>
-                </div>
-                <div class="skill-item">
-                    <div>JavaScript</div>
-                    <h3>Intermediate</h3>
-                </div>
                 <div class="skill-item">
                     <div>Python</div>
                     <h3>Proficient</h3>
@@ -78,35 +568,39 @@
                     <h3>Proficient</h3>
                 </div>
                 <div class="skill-item">
+                    <div>Flask</div>
+                    <h3>Proficient</h3>
+                </div>
+                <div class="skill-item">
                     <div>FastAPI</div>
                     <h3>Intermediate</h3>
                 </div>
                 <div class="skill-item">
-                    <div>RestAPIs</div>
-                    <h3>Intermediate</h3>
-                </div>
-                <div class="skill-item">
-                    <div>WebSockets</div>
-                    <h3>Intermediate</h3>
-                </div>
-                <div class="skill-item">
-                    <div>GCP/BigQuery</div>
-                    <h3>Intermediate</h3>
-                </div>
-                <div class="skill-item">
                     <div>Apache Airflow</div>
+                    <h3>Proficient</h3>
+                </div>
+                <div class="skill-item">
+                    <div>REST APIs</div>
+                    <h3>Proficient</h3>
+                </div>
+                <div class="skill-item">
+                    <div>Grafana</div>
                     <h3>Intermediate</h3>
                 </div>
                 <div class="skill-item">
-                    <div>SQL</div>
-                    <h3>Proficient</h3>
+                    <div>Prometheus</div>
+                    <h3>Intermediate</h3>
                 </div>
                 <div class="skill-item">
                     <div>PostgreSQL</div>
                     <h3>Proficient</h3>
                 </div>
                 <div class="skill-item">
-                    <div>SQLite3</div>
+                    <div>MySQL</div>
+                    <h3>Proficient</h3>
+                </div>
+                <div class="skill-item">
+                    <div>SQLite</div>
                     <h3>Proficient</h3>
                 </div>
                 <div class="skill-item">
@@ -114,78 +608,24 @@
                     <h3>Basic</h3>
                 </div>
                 <div class="skill-item">
+                    <div>GCP</div>
+                    <h3>Intermediate</h3>
+                </div>
+                <div class="skill-item">
+                    <div>Docker</div>
+                    <h3>Intermediate</h3>
+                </div>
+                <div class="skill-item">
                     <div>Git</div>
                     <h3>Proficient</h3>
                 </div>
                 <div class="skill-item">
-                    <div>Docker</div>
-                    <h3>Basic</h3>
+                    <div>HTML5/CSS3</div>
+                    <h3>Proficient</h3>
                 </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Certifications section -->
-    <section id="certifications">
-        <div class="container">
-            <div class="section-header">
-                <h2>Certifications</h2>
-                <p>Education and professional development</p>
-            </div>
-            <div class="certifications-container">
-                <div class="certification-card">
-                    <a href="certifications/python-masterclass-completion-certificate.pdf" target="_blank">
-                        <h3>Python</h3>
-                    </a>
-                    <div class="issuer">Python Masterclass (via Udemy)</div>
-                    <div class="date">December 30, 2024</div>
-                    <div class="details">
-                        Successfully completed this online non-credit course offered by Udemy.
-                    </div>
-                </div>
-                <div class="certification-card">
-                    <a href="certifications/Web Application Technologies and Django.pdf" target="_blank">
-                        <h3>Web Application Technologies and Django</h3>
-                    </a>
-                    <div class="issuer">University of Michigan (via Coursera)</div>
-                    <div class="date">January 24, 2025</div>
-                    <div class="details">Successfully completed this online non-credit course authorized by University of Michigan and offered through Coursera.</div>
-                </div>
-                <div class="certification-card">
-                    <a href="certifications/Building Web Applications in Django.pdf" target="_blank">
-                        <h3>Building Web Applications in Django</h3>
-                    </a>
-                    <div class="issuer">University of Michigan (via Coursera)</div>
-                    <div class="date">February 6, 2025</div>
-                    <div class="details">
-                        Successfully completed this online non-credit course authorized by University of Michigan and offered through Coursera.
-                    </div>
-                </div>
-                <div class="certification-card">
-                    <a href="certifications/fastAPI.jpg" target="_blank">
-                        <h3>FastAPI</h3>
-                    </a>
-                    <div class="issuer">FastAPI (via Udemy)</div>
-                    <div class="date">March 1, 2025</div>
-                    <div class="details">
-                        Successfully completed this online non-credit course offered by Udemy.
-                    </div>
-                </div>
-                <div class="certification-card">
-                    <a href="certifications/python-dsa.pdf" target="_blank">
-                        <h3>Data Structures and Algorithms</h3>
-                    </a>
-                    <div class="issuer">DSA (via Udemy)</div>
-                    <div class="date">January 30, 2025</div>
-                    <div class="details">Successfully completed this online non-credit course offered by Udemy.</div>
-                </div>
-                <div class="certification-card">
-                    <a href="certifications/Web Application Technologies and Django.pdf" target="_blank">
-                        <h3>Life Skills (Jeevan Kaushal) 2.0</h3>
-                    </a>
-                    <div class="issuer">Wadhwani Foundation, Rooman Technologies Pvt Ltd</div>
-                    <div class="date">January 16, 2025</div>
-                    <div class="details">Successfully completed 93 hours of coursework in essential life skills development.</div>
+                <div class="skill-item">
+                    <div>JavaScript</div>
+                    <h3>Intermediate</h3>
                 </div>
             </div>
         </div>
@@ -195,47 +635,116 @@
     <section id="projects">
         <div class="container">
             <div class="section-header">
-                <h2>My Projects</h2>
-                <p>Check out some of my recent work</p>
+                <h2>Featured Projects</h2>
+                <p>Building scalable applications and tools</p>
             </div>
             <div class="projects-grid">
                 <div class="project-card">
                     <div class="project-img">
-                        <img src="my_image/web-crawler.png" alt="Project 1">
+                        <img src="my_image/gigsync.png" alt="GigSync Platform">
                     </div>
                     <div class="project-content">
-                        <h3>Web Crawler</h3>
-                        <p>A multi-threaded web crawler built with Python that extracts and stores links efficiently while respecting domain constraints.</p>
+                        <h3>GigSync – Freelancing Platform</h3>
+                        <div class="project-tech">Flask | SQLite3 | HTML | CSS | JavaScript</div>
+                        <p>Architected multi-user platform with role-based authentication serving Employers, Freelancers, and Administrators. Designed RESTful APIs and implemented scalable database architecture with responsive frontend interfaces.</p>
                         <div class="project-links">
-                            <a href="https://github.com/Priyankaj8/web-crawler-using-python">View project repository</a>
+                            <a href="https://github.com/Priyankaj8/GigSync">View Repository</a>
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="project-card">
                     <div class="project-img">
-                        <img src="my_image/to-do.png" alt="Project 2">
-                    </div>
-                    <div class="project-content">
-                        <h3>To-Do List</h3>
-                        <p>A Django-based To-Do List application that allows users to create, edit, delete, and mark tasks as complete.</p>
-                        <div class="project-links">
-                            <a href="https://github.com/Priyankaj8/To-Do-List-App-Using-Django">View project repository</a>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="project-card">
-                    <div class="project-img">
-                        <img src="my_image/restock-bot.png" alt="Project 3">
+                        <img src="my_image/restock-bot.png" alt="Restock Bot">
                     </div>
                     <div class="project-content">
                         <h3>Restock Notification Bot</h3>
-                        <p>A full-stack Python app using FastAPI, SQLite, and BeautifulSoup to monitor product availability on e-commerce sites. Users can manage products via a web dashboard and receive email alerts when items are back in stock.</p>
+                        <div class="project-tech">FastAPI | SQLite | BeautifulSoup | SMTP</div>
+                        <p>Designed asynchronous task processing system with configurable scheduling for automated web monitoring. Architected RESTful API backend handling concurrent task execution and built responsive frontend for multi-user workflows.</p>
                         <div class="project-links">
-                            <a href="https://github.com/Priyankaj8/restock-notification-bot-using-python">View project repository</a>
+                            <a href="https://github.com/Priyankaj8/restock-notification-bot-using-python">View Repository</a>
                         </div>
                     </div>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-img">
+                        <img src="my_image/web-crawler.png" alt="Web Crawler">
+                    </div>
+                    <div class="project-content">
+                        <h3>Multi-threaded Web Crawler</h3>
+                        <div class="project-tech">Python | Threading | Beautiful Soup</div>
+                        <p>Built a multi-threaded web crawler that extracts and stores links efficiently while respecting domain constraints. Demonstrates concurrent programming and efficient data processing.</p>
+                        <div class="project-links">
+                            <a href="https://github.com/Priyankaj8/web-crawler-using-python">View Repository</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-img">
+                        <img src="my_image/to-do.png" alt="To-Do App">
+                    </div>
+                    <div class="project-content">
+                        <h3>Django To-Do Application</h3>
+                        <div class="project-tech">Django | SQLite | Bootstrap</div>
+                        <p>Full-featured task management application with CRUD operations, user authentication, and intuitive UI. Showcases Django framework proficiency and database design.</p>
+                        <div class="project-links">
+                            <a href="https://github.com/Priyankaj8/To-Do-List-App-Using-Django">View Repository</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certifications section -->
+    <section id="certifications">
+        <div class="container">
+            <div class="section-header">
+                <h2>Certifications & Education</h2>
+                <p>Continuous learning and professional development</p>
+            </div>
+            <div class="certifications-container">
+                <div class="certification-card">
+                    <a href="certifications/python-masterclass-completion-certificate.pdf" target="_blank">
+                        <h3>Python Masterclass</h3>
+                    </a>
+                    <div class="issuer">Udemy</div>
+                    <div class="date">December 30, 2024</div>
+                    <div class="details">Comprehensive Python programming course covering advanced concepts and best practices.</div>
+                </div>
+                <div class="certification-card">
+                    <a href="certifications/Web Application Technologies and Django.pdf" target="_blank">
+                        <h3>Web Application Technologies and Django</h3>
+                    </a>
+                    <div class="issuer">University of Michigan (via Coursera)</div>
+                    <div class="date">January 24, 2025</div>
+                    <div class="details">In-depth study of web technologies, HTTP protocol, and Django framework fundamentals.</div>
+                </div>
+                <div class="certification-card">
+                    <a href="certifications/Building Web Applications in Django.pdf" target="_blank">
+                        <h3>Building Web Applications in Django</h3>
+                    </a>
+                    <div class="issuer">University of Michigan (via Coursera)</div>
+                    <div class="date">February 6, 2025</div>
+                    <div class="details">Advanced Django development including models, views, templates, and deployment strategies.</div>
+                </div>
+                <div class="certification-card">
+                    <a href="certifications/fastAPI.jpg" target="_blank">
+                        <h3>FastAPI Development</h3>
+                    </a>
+                    <div class="issuer">Udemy</div>
+                    <div class="date">March 1, 2025</div>
+                    <div class="details">Modern API development with FastAPI, async programming, and performance optimization.</div>
+                </div>
+                <div class="certification-card">
+                    <a href="certifications/python-dsa.pdf" target="_blank">
+                        <h3>Data Structures and Algorithms</h3>
+                    </a>
+                    <div class="issuer">Udemy</div>
+                    <div class="date">January 30, 2025</div>
+                    <div class="details">Comprehensive coverage of data structures, algorithms, and problem-solving techniques.</div>
                 </div>
             </div>
         </div>
@@ -246,15 +755,15 @@
         <div class="container">
             <div class="section-header">
                 <h2>Get In Touch</h2>
-                <p>Interested in working together? Feel free to reach out!</p>
+                <p>Let's build something great together</p>
             </div>
             <div class="contact-content">
-                <p>Whether you have a question, want to collaborate on a project, or just want to say hello, I'd love to hear from you.</p>
-                <a href="mailto:priyankaa.j813@gmail.com.com" class="btn">Email Me</a>
+                <p>I'm always interested in hearing about new opportunities, collaborating on projects, or just having a technical discussion. Feel free to reach out!</p>
+                <a href="mailto:priyankaa.j813@gmail.com" class="btn">Email Me</a>
                 <div class="social-links">
-                    <a href="https://github.com/Priyankaj8/Priyankaj8">GitHub</a>
-                    <a href="https://www.linkedin.com/in/priyankaa-j/">LinkedIn</a>
-                    <a href="my_image/Resume - Priyanka J.pdf">Resume/CV</a>
+                    <a href="https://github.com/Priyankaj8" target="_blank">GitHub</a>
+                    <a href="https://www.linkedin.com/in/priyankaa-j/" target="_blank">LinkedIn</a>
+                    <a href="my_image/Resume - Priyanka J.pdf" target="_blank">Resume/CV</a>
                 </div>
             </div>
         </div>
